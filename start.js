@@ -4,28 +4,25 @@ module.exports = {
     {
       method: "shell.run",
       params: {
-        path: "app",                // Edit this to customize the path to start the shell from
+        path: "app",
         message: [
-          "launch-windows.bat",    // Edit with your custom commands
+          "{{platform === 'win32' ? 'launch-windows.bat' : platform === 'darwin' ? 'launch-macos.sh' : 'launch-linux.sh'}}"
         ],
-        on: [{
-          // The regular expression pattern to monitor.
-          // When this pattern occurs in the shell terminal, the shell will return,
-          // and the script will go onto the next step.
-          "event": "/http:\/\/\\S+/",   
-
-          // "done": true will move to the next step while keeping the shell alive.
-          // "kill": true will move to the next step after killing the shell.
-          "done": true
-        }]
+        on: [
+          {
+            event: "/http:\\/\\/\\S+/", // Listen for URL to set WebUI link
+            done: true
+          },
+          {
+            event: "/error:/i", // Listen for 'error:' (case-insensitive)
+            break: false       // Don’t terminate script on this match
+          }
+        ]
       }
     },
     {
-      // This step sets the local variable 'url'.
-      // This local variable will be used in pinokio.js to display the "Open WebUI" tab when the value is set.
       method: "local.set",
       params: {
-        // the input.event is the regular expression match object from the previous step
         url: "{{input.event[0]}}"
       }
     }
