@@ -9,22 +9,6 @@ module.exports = {
       }
     },
     {
-      method: "script.start",
-      params: {
-        uri: "torch.js",
-        params: {
-          venv: "env",
-          path: "app"
-        }
-      },
-      events: [
-        {
-          event: "/error:/i",
-          break: false
-        }
-      ]
-    },
-    {
       method: "shell.run",
       params: {
         message: [
@@ -75,10 +59,15 @@ module.exports = {
       }
     },
     {
-      method: "fs.link",
+      id: 'end',
+      method: 'input',
       params: {
-        venv: "app/env"
+        title: "Install Complete!!",
+        description: "Once the ComfyUI install is done stop the app and run the (Enhance-ComfyUI)"
       }
-    }
+    },
   ]
 }
+
+
+

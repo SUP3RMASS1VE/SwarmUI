@@ -5,7 +5,7 @@ module.exports = {
   description: "A Modular AI Image Generation Web-User-Interface, with an emphasis on making powertools easily accessible, high performance, and extensibility. Supports Stable Diffusion, Flux, etc. AI image models, with plans to support AI video, audio, and more in the future.",
   icon: "icon.png",
   menu: async (kernel, info) => {
-    let installed = info.exists("app/env")
+    let installed = info.exists("app/src")
     
     let downloading = [
       "download-xlabs.json",
@@ -35,6 +35,7 @@ module.exports = {
       start: info.running("start.js"),
       update: info.running("update.js"),
       reset: info.running("reset.js"),
+      enhance: info.running("enhance-comfy.js"),
     }
     if (running.install) {
       return [{
@@ -86,6 +87,13 @@ module.exports = {
           text: "Resetting",
           href: "reset.js",
         }]
+      } else if (running.enhance) {
+        return [{
+          default: true,
+          icon: 'fa-solid fa-terminal',
+          text: "Enhancing ComfyUI",
+          href: "enhance-comfy.js",
+        }]
       } else {
         return [{
           default: true,
@@ -118,6 +126,10 @@ module.exports = {
           icon: "fa-solid fa-plug",
           text: "Install",
           href: "install.js",
+        }, {
+          icon: "fa-solid fa-magic-wand-sparkles",
+          text: "Enhance ComfyUI",
+          href: "enhance-comfy.js",
         }, {
           icon: "fa-regular fa-circle-xmark",
           text: "Reset",

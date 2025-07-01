@@ -6,7 +6,16 @@ module.exports = {
       params: {
         path: "app",
         message: [
-          "{{platform === 'win32' ? 'launch-windows.bat' : platform === 'darwin' ? 'launch-macos.sh' : 'launch-linux.sh'}}"
+          "dotnet build src --configuration Release"
+        ]
+      }
+    },
+    {
+      method: "shell.run",
+      params: {
+        path: "app",
+        message: [
+          "dotnet src/bin/Release/net8.0/SwarmUI.dll"
         ],
         on: [
           {
@@ -15,7 +24,7 @@ module.exports = {
           },
           {
             event: "/error:/i", // Listen for 'error:' (case-insensitive)
-            break: false       // Don’t terminate script on this match
+            break: false       // Don't terminate script on this match
           }
         ]
       }

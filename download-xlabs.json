@@ -10,7 +10,7 @@
         "https://huggingface.co/XLabs-AI/flux-lora-collection/resolve/main/realism_lora_comfy_converted.safetensors?download=true",
         "https://huggingface.co/XLabs-AI/flux-lora-collection/resolve/main/scenery_lora_comfy_converted.safetensors?download=true"
       ],
-      "dir": "app/models/Lora"
+      "dir": "app/Models/Lora"
     }
   }]
 }

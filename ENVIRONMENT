@@ -27,7 +27,7 @@ PINOKIO_SHARE_PASSCODE=
 # will NOT automatically run
 #
 ##########################################################################
-PINOKIO_SCRIPT_DEFAULT=true
+PINOKIO_SCRIPT_DEFAULT=false
 
 ##########################################################################
 #
