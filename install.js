@@ -62,7 +62,7 @@ module.exports = {
       id: 'end',
       method: 'input',
       params: {
-        title: "Install Complete!!",
+        title: "Important Notice!!",
         description: "Once the ComfyUI install is done stop the app and run the (Enhance-ComfyUI)"
       }
     },
